@@ -120,6 +120,10 @@ def add_course():
 
             # Saving the new course and updating tracing span
             span.set_attribute("course.data", json.dumps(course))
+            span.set_attribute("code",code)
+            span.set_attribute("course name",course_name)
+            span.set_attribute("instructor",instructor)
+            span.set_attribute("semester",semester)
             save_courses(course)
             span.set_status(StatusCode.OK)# Indicating that the span has completed successfully without errors.
             flash(f"Course '{course['name']}' added successfully!", "success")  # Showing success message after adding the course
